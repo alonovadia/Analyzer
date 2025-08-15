@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Player Data{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h1 class="card-title text-center mb-4">Player Data Uploader 📈</h1>
+        <p class="text-center text-muted">
+            Paste markdown table rows to add new game records for players. Duplicates will be ignored automatically.
+            <br>
+            <strong>Format:</strong> | Guild | Player | Defeats | Assists | Dmg Dealt | Dmg Taken | Healed |
+        </p>
+        
+        <form method="post" enctype="multipart/form-data" action="{{ url_for('player_upload_page') }}">
+            <div class="mb-3">
+                <textarea name="markdown_data" class="form-control" rows="15" placeholder="Paste data here..."></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="file" class="form-label">Or upload a text file:</label>
+                <input class="form-control" type="file" id="file" name="file" accept=".txt,.log,.csv">
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Process and Save Data</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm border-danger">
+    <div class="card-body text-center">
+        <h5 class="card-title text-danger">⚠️ Danger Zone</h5>
+        <p class="text-muted">Need to start over? This will permanently delete all saved player statistics.</p>
+        <form action="{{ url_for('clear_data_page') }}" method="post" onsubmit="return confirm('Are you sure you want to delete ALL saved player data? This action cannot be undone.');">
+            <button type="submit" class="btn btn-danger">Clear All Player Data</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

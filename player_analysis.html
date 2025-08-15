@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Player Analysis{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="card-title text-center mb-4">Player Statistics 📊</h1>
+        
+        {% if players %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Overall Averages Per Game</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Avg. Defeats:</strong> {{ overall_averages.Avg_Defeats }}</li>
+                        <li class="list-group-item"><strong>Avg. Assists:</strong> {{ overall_averages.Avg_Assists }}</li>
+                        <li class="list-group-item"><strong>Avg. Damage Dealt:</strong> {{ overall_averages.Avg_Damage_Dealt }}</li>
+                        <li class="list-group-item"><strong>Avg. Damage Taken:</strong> {{ overall_averages.Avg_Damage_Taken }}</li>
+                        <li class="list-group-item"><strong>Avg. Amount Healed:</strong> {{ overall_averages.Avg_Amount_Healed }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Team</th>
+                            <th>Total Defeats</th>
+                            <th>Total Assists</th>
+                            <th>Total Damage Dealt</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for player in players %}
+                            <tr>
+                                <td><a href="{{ url_for('player_details_page', player_name=player.Player_Name) }}">{{ player.Player_Name }}</a></td>
+                                <td>{{ player.Team }}</td>
+                                <td>{{ player.Total_Defeats }}</td>
+                                <td>{{ player.Total_Assists }}</td>
+                                <td>{{ player.Total_Damage_Dealt }}</td>
+                                <td>{{ player.Total_Games }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center mt-4" role="alert">
+                No player data available. Please go to the "Upload Player Data" page to add some data.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

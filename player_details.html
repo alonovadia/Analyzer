@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Player Details - {{ player_name }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="card-title text-center mb-4">Stats for {{ player_name }}</h1>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3>Total Stats</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Games:</strong> {{ total_stats.Total_Games }}</li>
+                            <li class="list-group-item"><strong>Defeats:</strong> {{ total_stats.Total_Defeats }}</li>
+                            <li class="list-group-item"><strong>Assists:</strong> {{ total_stats.Total_Assists }}</li>
+                            <li class="list-group-item"><strong>Damage Dealt:</strong> {{ total_stats.Total_Damage_Dealt }}</li>
+                            <li class="list-group-item"><strong>Damage Taken:</strong> {{ total_stats.Total_Damage_Taken }}</li>
+                            <li class="list-group-item"><strong>Amount Healed:</strong> {{ total_stats.Total_Amount_Healed }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3>Average Stats Per Game</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Avg. Defeats:</strong> {{ average_stats.Avg_Defeats }}</li>
+                            <li class="list-group-item"><strong>Avg. Assists:</strong> {{ average_stats.Avg_Assists }}</li>
+                            <li class="list-group-item"><strong>Avg. Damage Dealt:</strong> {{ average_stats.Avg_Damage_Dealt }}</li>
+                            <li class="list-group-item"><strong>Avg. Damage Taken:</strong> {{ average_stats.Avg_Damage_Taken }}</li>
+                            <li class="list-group-item"><strong>Avg. Amount Healed:</strong> {{ average_stats.Avg_Amount_Healed }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
