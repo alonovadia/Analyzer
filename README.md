@@ -41,7 +41,6 @@ Instructions:
   venv
   app.py
   ew.md
-  README.md 
 
 --- Install needed dependencies (as shows in app.py)
 
